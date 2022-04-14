@@ -22,7 +22,28 @@ const Token = sequelize.define('token', {
   refreshToken: { type: DataTypes.STRING(2048), ref: 'user' },
 })
 
+const Product = sequelize.define('product', {
+  id: {type: DataTypes.STRING(2048), unique: true, primaryKey: true},
+  name: {type: DataTypes.STRING, unique: true, allowNull: false},
+  img: {type: DataTypes.STRING, allowNull: false},
+  price: {type: DataTypes.INTEGER, allowNull: false},
+  description: {type: DataTypes.STRING(1000)},
+  weight: {type: DataTypes.STRING},
+  category: {type: DataTypes.STRING},
+})
+
+const ProductInfo = sequelize.define('product_info',{
+  id: {type: DataTypes.STRING(2048), primaryKey: true, unique: true},
+  name: {type: DataTypes.STRING},
+  value: {type: DataTypes.STRING}
+})
+
+Product.hasMany(ProductInfo, {as: 'info'})
+ProductInfo.belongsTo(Product)
+
 module.exports = {
   User,
   Token,
+  Product,
+  ProductInfo
 }
