@@ -1,0 +1,125 @@
+@import './src/scss/index';
+
+.wrapper {
+	position: relative;
+
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+
+	padding: 24px 80px;
+	grid-template-columns: auto 555px 1fr auto auto;
+
+	@include _laptopL {
+		grid-template-columns: auto 1fr auto auto auto;
+	}
+
+	@include _laptop {
+		padding: 20px;
+		grid-template-columns: 64px 1fr auto;
+		row-gap: 20px;
+		grid-template-areas:
+			'burger logo button'
+			'search search search';
+	}
+
+	.burger {
+		display: none;
+
+		@include _laptop {
+			display: unset;
+			grid-area: burger;
+
+			cursor: pointer;
+		}
+	}
+
+	.logo {
+		margin-right: 80px;
+
+		cursor: pointer;
+		letter-spacing: 5px;
+
+		font-size: 25px;
+
+		@include _laptopL {
+			margin-right: 40px;
+		}
+
+		@include _laptop {
+			margin-right: 0;
+			grid-area: logo;
+			justify-self: left;
+		}
+	}
+
+	.myOrders {
+		margin-right: 40px;
+
+		@include _laptop {
+			display: none;
+		}
+
+		span {
+			cursor: pointer;
+			transition: all ease .2s;
+
+			&:hover {
+				color: var(--green);
+			}
+		}
+	}
+
+	.btn {
+		@include _laptopL {
+			padding: 8px 16px;
+		}
+
+		@include _laptop {
+			display: none;
+		}
+	}
+
+	.image {
+		width: 76px;
+		height: 89px;
+		margin-top: 10%;
+		margin-bottom: 20px;
+	}
+
+	.modalBtn {
+		margin-top: 20px;
+		padding: 17px 35px;
+	}
+
+	.overlay {
+		position: fixed;
+		z-index: 99;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+
+		overflow: hidden;
+
+		opacity: 1;
+		background: rgba(33, 31, 32, 0.7);
+		backdrop-filter: blur(2px);
+
+		@include flex;
+	}
+
+	.menu {
+		position: fixed;
+		z-index: 999;
+		top: 0;
+		bottom: 0;
+		left: 0;
+
+		width: 320px;
+		height: 100vh;
+
+		background: var(--brownGradient);
+	}
+}

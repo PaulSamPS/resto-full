@@ -1,0 +1,166 @@
+@import './src/scss/index';
+
+.wrapper {
+  width: 840px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include _laptop {
+    width: 100%;
+  }
+
+  .arrBtn {
+    cursor: pointer;
+    margin-bottom: 40px;
+    @include flex;
+
+    &:hover {
+      span {
+        color: var(--green);
+      }
+    }
+
+    button {
+      width: 26px;
+      height: 26px;
+      padding: 0!important;
+      border-radius: 50%;
+      margin-right: 10px;
+      &:active {
+        transform: unset;
+
+        box-shadow: unset;
+      }
+    }
+
+    span {
+      transition: all ease .2s;
+    }
+  }
+
+  .title {
+    margin: 16px 0 40px 0;
+    padding-left: 20px;
+
+    border-left: 4px solid var(--green);
+
+    font-size: 32px;
+
+    @include _tablet {
+      margin-left: 0;
+
+      font-size: 26px;
+    }
+  }
+
+  .infoBlock {
+    margin-bottom: 20px;
+    @include flexColumn;
+    align-items: unset;
+    row-gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    label {
+      color: var(--tetxGray);
+    }
+
+    span {
+      color: var(--textWhite);
+    }
+  }
+
+  .card {
+    @include flexBetweenCenter;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    @include _tablet {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      row-gap: 20px;
+      grid-template-areas:
+      'image count'
+      'title title';
+    }
+
+    img {
+      object-fit: cover;
+      width: 117px;
+      height: 86px;
+      border-radius: 10px;
+
+      @include _tablet {
+        grid-area: image;
+      }
+
+      h2 {
+        @include _tablet {
+          grid-area: title;
+        }
+      }
+    }
+
+    .count {
+      width: 40px;
+      height: 40px;
+
+      color: var(--textWhite);
+      border-radius: 50%;
+      background: var(--green);
+
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 24px;
+
+      @include flexCenterCenter;
+
+      @include _tablet {
+        grid-area: count;
+      }
+    }
+  }
+
+  .total {
+    @include flexBetweenCenter;
+
+    .totalSum {
+      @include flex;
+      column-gap: 10px;
+
+      span {
+        color: #A6A7AB;
+
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .totalPrice {
+        color: var(--textWhite);
+
+        font-size: 25px;
+        font-weight: 700;
+      }
+    }
+
+    .countBlock {
+      @include flex;
+      column-gap: 10px;
+
+      span {
+        color: #A6A7AB;
+
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .totalCount {
+        color: var(--textWhite);
+
+        font-size: 25px;
+        font-weight: 700;
+      }
+    }
+  }
+}

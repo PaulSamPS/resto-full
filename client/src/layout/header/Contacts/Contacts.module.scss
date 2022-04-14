@@ -1,0 +1,52 @@
+@import './src/scss/index';
+
+.wrapper {
+	@include flex;
+	gap: 10px;
+
+	margin-left: 40px;
+
+	@include _laptopL {
+		margin-right: 40px;
+	}
+
+	@include _laptop {
+		display: none;
+	}
+
+	.icon {
+		@include flexCenterCenter;
+		width: 32px;
+		height: 32px;
+
+		cursor: pointer;
+		transition: transform ease 0.2s;
+
+		border-radius: 50%;
+		background: var(--green);
+
+		&:hover {
+			transform: scale(1.1);
+		}
+	}
+
+	.phoneWrapper {
+		@include flexColumn;
+		align-items: unset;
+
+		span {
+			color: var(--tetxGray);
+
+			font-size: 12px;
+			font-weight: 400;
+		}
+
+		.phoneNumber {
+			color: var(--textWhite);
+
+			font-size: 14px;
+			font-weight: 700;
+			line-height: 20px;
+		}
+	}
+}

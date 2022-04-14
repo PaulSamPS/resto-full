@@ -1,0 +1,33 @@
+.wrapper {
+  .button {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    transition: transform ease 0.2s;
+
+    color: var(--textWhite);
+    border: none;
+    border-radius: 10px;
+    background: var(--greenGradient);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17px;
+
+    @include flexCenterCenter;
+
+    &:disabled {
+      cursor: unset;
+
+      opacity: 0.5;
+      background: var(--tetxGray);
+    }
+
+    &:active {
+      transform: translateY(2px);
+
+      box-shadow: 0 5px 10px 0 #72A379B2;
+    }
+  }
+}

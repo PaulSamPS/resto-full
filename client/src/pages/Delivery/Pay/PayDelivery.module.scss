@@ -1,0 +1,62 @@
+@import './src/scss/index';
+
+.title {
+	margin-bottom: 20px;
+
+	text-transform: none;
+
+	font-size: 18px;
+}
+
+.choose {
+	@include flex;
+
+	@include _tablet {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.btn {
+		width: 181px;
+		padding: 20px 0;
+
+		cursor: pointer;
+
+		border: 1px solid var(--green);
+		border-radius: 0;
+		background: transparent;
+
+		font-size: 16px;
+		font-weight: 500;
+
+		&:first-child {
+			border-right: none;
+			border-radius: 10px 0 0 10px;
+		}
+
+		&:last-child {
+			border-left: none;
+			border-radius: 0 10px 10px 0;
+		}
+
+		&:active {
+			transform: unset;
+		}
+
+		@include _tablet {
+			width: unset;
+
+			font-size: 14px;
+		}
+
+		@include _mobileM {
+			font-size: 12px;
+		}
+	}
+
+	.activeBtn {
+		background: var(--greenGradient);
+
+		font-weight: 700;
+	}
+}

@@ -1,0 +1,29 @@
+@import './src/scss/index';
+
+.title {
+	margin-bottom: 20px;
+
+	text-transform: none;
+
+	font-size: 18px;
+
+	@include _tablet {
+		font-size: 16px;
+	}
+}
+
+.contactInfo {
+	display: grid;
+	grid-template-columns: 363px 363px;
+	column-gap: 15px;
+
+	@include _laptop {
+		grid-template-columns: 1fr;
+		column-gap: 0;
+		row-gap: 20px;
+	}
+
+	.input {
+		width: 100%;
+	}
+}

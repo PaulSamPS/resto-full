@@ -1,0 +1,6 @@
+@import './src/scss/index';
+
+.container {
+	@include flexColumn;
+	min-height: 100vh;
+}

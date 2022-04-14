@@ -1,0 +1,15 @@
+@import './src/scss/index';
+
+.yMap {
+  width: 100%;
+
+  div {
+    width: 100%!important;
+    margin-top: 20px;
+  }
+  .address {
+    color: var(--textWhite);
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

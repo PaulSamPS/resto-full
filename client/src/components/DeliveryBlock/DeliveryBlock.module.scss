@@ -1,0 +1,24 @@
+@import './src/scss/index';
+
+.wrapper {
+	width: 100%;
+	margin-bottom: 20px;
+	padding: 30px;
+
+	border-radius: 10px;
+	background: var(--brown);
+
+	&:last-child {
+		margin-bottom: 90px;
+	}
+
+	@include _laptop {
+		padding: 20px;
+	}
+
+	@include _tablet {
+		&:last-child {
+			margin-bottom: 50px;
+		}
+	}
+}

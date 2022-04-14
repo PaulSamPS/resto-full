@@ -1,0 +1,41 @@
+@import "./src/components/Button/Button.module";
+
+.cart {
+	margin-bottom: 5px;
+	margin-left: 0 !important;
+}
+
+.cartMobile {
+	display: none;
+
+	padding: 10px;
+
+	@include _laptop {
+		@include flexColumn;
+		font-size: 12px;
+
+		svg {
+			width: 24px;
+			height: 24px;
+			margin-bottom: 5px;
+		}
+	}
+}
+
+.borderMobile {
+	width: 100%;
+
+	border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.burger {
+	background: transparent;
+	box-shadow: none;
+}
+
+.count {
+	width: 62px;
+	height: 44px;
+
+	@include flexCenterCenter;
+}

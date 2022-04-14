@@ -1,0 +1,134 @@
+@import './src/scss/index';
+
+.wrapper {
+	@include flexBetweenCenter;
+
+	@include _tablet {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-template-areas: 'btn' 'cond';
+		row-gap: 15px;
+	}
+
+	.conditions {
+		@include flex;
+		column-gap: 10px;
+
+		position: relative;
+
+		> input {
+			position: absolute;
+
+			cursor: pointer;
+
+			opacity: 0;
+		}
+
+		> label {
+			@include flex;
+			user-select: none;
+
+			border: 1px solid transparent;
+
+			&::before {
+				display: inline-block;
+				flex-grow: 0;
+				flex-shrink: 0;
+
+				width: 20px;
+				height: 20px;
+
+				content: '';
+
+				border-radius: 10px;
+				background: var(--textWhite);
+				background-repeat: no-repeat;
+				background-position: center center;
+				background-size: 50% 50%;
+			}
+		}
+
+		> input:checked + label {
+			&::before {
+				background-image: url(/pages/Delivery/Checkout/Icons/checked.png);
+			}
+		}
+
+		.errorCheckbox {
+			border: 1px solid var(--red);
+			border-radius: 10px;
+		}
+
+		@include _tablet {
+			grid-area: cond;
+		}
+	}
+
+	.checkbox {
+		width: 20px;
+		height: 20px;
+		margin-right: 5px;
+	}
+
+	.label {
+		display: inline-flex;
+		align-items: center;
+
+		user-select: none;
+
+		color: var(--textWhite);
+
+		font-size: 13px;
+
+		@include _mobileL {
+			font-size: 10px;
+		}
+	}
+
+	.error {
+		position: absolute;
+		top: -22px;
+		left: 0;
+
+		color: var(--red);
+
+		font-size: 16px;
+	}
+
+	.conditionsText {
+		a {
+			display: inline-block;
+
+			cursor: pointer;
+			text-decoration: none;
+
+			color: var(--green);
+			border-bottom: 1px solid var(--green);
+		}
+
+		@include _mobileL {
+			a {
+				font-size: 10px;
+			}
+		}
+
+		span {
+			grid-area: btn;
+
+			margin-right: 5px;
+
+			white-space: unset;
+
+			font-size: 13px;
+
+			@include _mobileL {
+				font-size: 10px;
+			}
+		}
+	}
+
+	.btn {
+		padding: 20px 50px;
+		justify-self: center;
+	}
+}

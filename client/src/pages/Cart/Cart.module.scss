@@ -1,0 +1,81 @@
+@import './src/scss/index';
+
+.wrapper {
+	@include flexColumn;
+	align-items: unset;
+
+	padding: 0 20px;
+
+	.title {
+		margin: 16px 0 40px 115px;
+		padding-left: 20px;
+
+		border-left: 4px solid var(--green);
+
+		font-size: 32px;
+
+		@include _tablet {
+			margin-left: 0;
+
+			font-size: 26px;
+		}
+	}
+
+	.cardWrapper {
+		width: 1096px;
+		margin: 0 auto;
+
+		border-radius: 10px;
+		background: var(--brownGradient);
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+		@include _laptopL {
+			width: 900px;
+		}
+
+		@include _laptop {
+			width: 700px;
+		}
+
+		@include _tablet {
+			width: 385px;
+		}
+
+		@include _mobileL {
+			width: 335px;
+		}
+
+		@include _mobileM {
+			width: 275px;
+		}
+	}
+
+	.emptyCart {
+		min-width: 458px;
+		min-height: 358px;
+		margin-top: 50px;
+		padding: 20px;
+
+		@include flexColumn;
+
+		@include _tablet {
+			min-width: 385px;
+			min-height: 285px;
+		}
+
+		img {
+			width: 76px;
+			height: 89px;
+			margin-bottom: 20px;
+		}
+
+		h2 {
+			font-size: 25px;
+		}
+
+		button {
+			margin-top: 20px;
+			padding: 17px 35px;
+		}
+	}
+}

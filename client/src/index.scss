@@ -1,0 +1,77 @@
+@import-normalize;
+
+@import './scss/media_mixins';
+@import './scss/flex_mixins';
+
+body {
+	overflow-y: scroll;
+
+	max-width: 1440px;
+	margin: 0 auto;
+
+	background: linear-gradient(360deg, #211F20 -0.12%, #44403F 99.88%);
+
+	font-family:
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		'Roboto',
+		'Oxygen',
+		'Ubuntu',
+		'Cantarell',
+		'Fira Sans',
+		'Droid Sans',
+		'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.ymaps-2-1-79-inner-panes {
+	border-radius: 10px;
+}
+
+.ymaps-2-1-79-map {
+	filter: saturate(1.3);
+	width: 100%!important;
+
+	border-radius: 10px;
+}
+
+.ymaps-2-1-79-map-copyrights-promo {
+	display: none;
+}
+
+.suggest-item {
+	color: var(--green);
+}
+
+p {
+	color: #CFCFCF;
+}
+
+h1,
+h2,
+h3,
+span {
+	color: var(--textWhite);
+}
+
+:root {
+	--tetxGray: #CFCFCF;
+	--textWhite: #FFF;
+	--greenGradient: linear-gradient(114.93deg, #618967 5.11%, #72A479 94%);
+	--brownGradient: linear-gradient(90deg, #494544 0%, #504B4A 100%);
+	--footerGradient: linear-gradient(270.7deg, #44403F 0.4%, #211F20 100%);
+	--darkBrown: #403C3B;
+	--black: #211F20;
+	--green: #618967;
+	--brown: #504B4A;
+	--red: #FC836D;
+}

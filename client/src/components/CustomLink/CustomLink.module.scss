@@ -1,0 +1,28 @@
+@import './src/scss/index';
+
+.link {
+	margin-left: 40px;
+
+	transition: color ease 0.2s;
+	text-decoration: none;
+
+	color: var(--tetxGray);
+
+	font-size: 18px;
+
+	&:hover {
+		color: var(--textWhite);
+	}
+
+	@include _laptopL {
+		font-size: 14px;
+	}
+
+	@include _tablet {
+		margin-left: 0;
+	}
+}
+
+.active {
+	color: var(--green);
+}

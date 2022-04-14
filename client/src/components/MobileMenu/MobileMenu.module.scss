@@ -1,0 +1,134 @@
+@import './src/scss/index';
+
+.wrapper {
+	position: relative;
+
+
+	min-height: 100vh;
+	padding: 30px 20px 20px;
+	row-gap: 10px;
+
+	@include flexColumn;
+	align-items: unset;
+
+	.top {
+		width: 100%;
+		margin-bottom: 15px;
+		padding-top: 7px;
+
+		svg {
+			position: absolute;
+			top: 37px;
+			left: 18px;
+
+			cursor: pointer;
+			transition: all ease 0.2s;
+
+			&:hover {
+				transform: rotate(90deg);
+			}
+		}
+
+		h1 {
+			padding-bottom: 20px;
+
+			text-align: center;
+
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+			font-size: 25px;
+		}
+	}
+
+	.myOrders {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		padding-bottom: 20px;
+		display: none;
+
+		@include _laptop {
+			display: block;
+		}
+
+		span {
+			cursor: pointer;
+			transition: all ease .2s;
+
+			&:hover {
+				color: var(--green);
+			}
+		}
+	}
+
+	.categories {
+		color: var(--textWhite);
+		margin-bottom: 20px;
+	}
+
+	a {
+		padding-bottom: 30px;
+
+		cursor: pointer;
+		transition: all ease 0.2s;
+		transform: translateY(2px);
+		white-space: nowrap;
+		text-decoration: none;
+
+		color: var(--tetxGray);
+
+		font-size: 16px;
+
+		@include _laptopL {
+			padding-bottom: 15px;
+
+			font-size: 14px;
+		}
+	}
+
+	.activeLink {
+		color: var(--green);
+	}
+
+	.contacts {
+		@include flex;
+		margin-top: auto;
+		gap: 10px;
+
+		.icon {
+			@include flexCenterCenter;
+			width: 32px;
+			height: 32px;
+
+			cursor: pointer;
+			transition: transform ease 0.2s;
+
+			border-radius: 50%;
+			background: var(--green);
+
+			svg {
+				position: unset;
+			}
+
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+
+		.phone {
+			@include flexColumn;
+			align-items: unset;
+
+			.text {
+				color: var(--tetxGray);
+
+				font-size: 12px;
+				font-weight: 400;
+			}
+
+			.number {
+				font-size: 14px;
+				font-weight: 700;
+				line-height: 20px;
+			}
+		}
+	}
+}

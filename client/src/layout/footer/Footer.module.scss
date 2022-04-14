@@ -1,0 +1,23 @@
+@import './src/scss/index';
+
+.wrapper {
+	width: calc(100% - 40px);
+	margin-top: auto;
+	padding: 24px 80px;
+
+	text-align: center;
+
+	border-radius: 10px 10px 0 0;
+	background: var(--footerGradient);
+
+	@include _tablet {
+		display: grid;
+
+		margin-right: 20px;
+		margin-left: 20px;
+		padding: 24px 0;
+		grid-template-columns: 1fr 1fr;
+		justify-items: center;
+		row-gap: 10px;
+	}
+}

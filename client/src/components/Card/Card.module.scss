@@ -1,0 +1,123 @@
+@import './src/scss/index';
+
+.wrapper {
+	position: relative;
+
+	@include flexColumn;
+	align-items: unset;
+
+	width: 327px;
+
+	transition: all ease 0.2s;
+
+	border-radius: 10px;
+	background: var(--brownGradient);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+	a {
+		text-decoration: none;
+	}
+
+	&:hover {
+		transform: translateY(-3px);
+
+		box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.1);
+	}
+
+	@include _desktop {
+		width: 300px;
+	}
+
+	@include _mobileM {
+		width: 280px;
+	}
+
+	.img {
+		width: 327px;
+		height: 227px;
+
+		cursor: pointer;
+
+		@include _desktop {
+			width: 300px;
+		}
+
+		@include _mobileM {
+			width: 280px;
+		}
+
+		img {
+			object-fit: cover;
+
+			width: 100%;
+			height: 100%;
+
+			border-radius: 10px 10px 0 0;
+		}
+	}
+
+	.info {
+		flex-grow: 1;
+
+		padding: 20px;
+
+		p {
+			color: #CFCFCF;
+		}
+
+		.top {
+			@include flexBetweenBaseline;
+
+			h3 {
+				color: var(--textWhite);
+			}
+
+			span {
+				color: #CFCFCF;
+
+				font-size: 12px;
+				font-weight: 400;
+			}
+		}
+
+		.desc {
+			flex-grow: 1;
+
+			max-width: 250px;
+			margin-top: 10px;
+
+			@include _desktop {
+				width: 220px;
+			}
+
+			@include _laptopL {
+				width: 200px;
+
+				font-size: 12px;
+			}
+		}
+	}
+
+	.buttons {
+		padding: 20px;
+	}
+
+	.count {
+		position: absolute;
+		top: -12px;
+		right: -12px;
+
+		width: 50px;
+		height: 50px;
+
+		color: var(--textWhite);
+		border-radius: 50%;
+		background: var(--green);
+
+		font-size: 20px;
+		font-weight: 700;
+		line-height: 24px;
+
+		@include flexCenterCenter;
+	}
+}

@@ -1,0 +1,98 @@
+@import './src/scss/index';
+
+.wrapper {
+	position: relative;
+
+	display: grid;
+	align-items: center;
+
+	width: 763px;
+	min-height: 130px;
+	margin: 80px auto 80px;
+	padding: 20px;
+
+	border-radius: 10px;
+	background: var(--brownGradient);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+	grid-template-columns: auto 1fr 175px;
+
+	@include _laptop {
+		width: 563px;
+	}
+
+	@include _tablet {
+		width: 385px;
+		grid-template-columns: 1fr;
+	}
+
+	@include _mobileL {
+		width: 335px;
+	}
+
+	@include _mobileM {
+		width: 275px;
+	}
+
+	.totalSum {
+		@include flex;
+		column-gap: 10px;
+
+		span {
+			color: #A6A7AB;
+
+			font-size: 18px;
+			font-weight: 500;
+		}
+
+		.totalPrice {
+			color: var(--textWhite);
+
+			font-size: 25px;
+			font-weight: 700;
+		}
+	}
+
+	.minSum {
+		@include flexColumn;
+		row-gap: 5px;
+
+		@include _tablet {
+			margin-bottom: 10px;
+		}
+
+		span {
+			font-size: 12px;
+		}
+
+		.minOrder {
+			color: var(--textWhite);
+
+			font-size: 12px;
+
+			@include _tablet {
+				bottom: 80px;
+			}
+
+			@include _mobileM {
+				font-size: 11px;
+			}
+
+			span {
+				margin-top: 15px;
+
+				color: var(--green);
+
+				font-size: 12px;
+			}
+		}
+	}
+
+	.btn {
+		width: 175px;
+		height: 41px;
+
+		@include _tablet {
+			justify-self: center;
+		}
+	}
+}

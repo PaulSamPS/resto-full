@@ -1,0 +1,81 @@
+@import './src/scss/index';
+
+.button {
+	padding: 10px 20px;
+
+	cursor: pointer;
+	transition: transform ease 0.2s;
+
+	color: var(--textWhite);
+	border: none;
+	border-radius: 10px;
+	background: var(--greenGradient);
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 17px;
+
+	@include flexCenterCenter;
+
+	&:disabled {
+		cursor: unset;
+
+		opacity: 0.5;
+		background: var(--tetxGray);
+	}
+
+	&:active {
+		transform: translateY(2px);
+
+		box-shadow: 0 5px 10px 0 #72A379B2;
+	}
+
+	.card {
+		margin-top: 3px;
+		margin-left: 10px;
+	}
+
+	.cardInfo {
+		margin-left: 10px;
+
+		svg {
+			position: unset;
+		}
+	}
+
+	.cart {
+		@include flexCenterCenter;
+		width: 24px;
+		height: 24px;
+		margin-left: 12px;
+
+		border-radius: 50%;
+		background: var(--textWhite);
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+		line-height: 0;
+
+		.totalCount {
+			color: #403C3B;
+		}
+	}
+
+	.border {
+		height: 38px;
+		padding-right: 20px;
+
+		border-right: 1px solid rgba(255, 255, 255, 0.3);
+	}
+}
+
+.count {
+	width: 62px;
+	height: 44px;
+
+	@include flexCenterCenter;
+
+	svg {
+		position: unset !important;
+	}
+}

@@ -1,0 +1,46 @@
+@import './src/scss/index';
+
+.wrapper {
+	position: relative;
+
+	.input {
+		width: 100%;
+		padding: 15px 30px;
+
+		color: var(--textWhite);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 10px;
+		background: none;
+		box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+
+		font-size: 16px;
+		font-weight: 400;
+
+		&::placeholder {
+			opacity: 1;
+			color: var(--textWhite);
+		}
+
+		&:focus {
+			outline: none;
+		}
+
+		@include _laptopL {
+			font-size: 14px;
+		}
+	}
+
+	.error {
+		border: 1px solid var(--red);
+	}
+
+	.errorMessage {
+		position: absolute;
+		top: -18px;
+		left: 0;
+
+		color: var(--red);
+
+		font-size: 14px;
+	}
+}
