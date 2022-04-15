@@ -1,0 +1,11 @@
+### Список всех товаров
+GET /api/product/ HTTP/1.1
+Host: localhost:5000
+
+### Получить один товар
+GET /api/product/getone/12345 HTTP/1.1
+Host: localhost:5000
+
+### Создать новый товар
+POST /api/product/add HTTP/1.1
+Host: localhost:5000

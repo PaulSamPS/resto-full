@@ -54,7 +54,7 @@ class UserController {
       const { password, name } = req.body
       const user = await User.findOne({ where: { name } })
       const userData = await userService.login(name, password, user, next)
-      res.cookie('refreshToken', userData.refreshToken, {
+      res.cookie('refreshToken', userData.refreshToken, userData.user.id, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
       })

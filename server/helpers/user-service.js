@@ -1,5 +1,5 @@
 const ApiError = require('../error/ApiError')
-const { User } = require('../models/models')
+const { User, Basket } = require('../models/models')
 const uuid = require('uuid')
 const bcrypt = require('bcrypt')
 const { sendActivationLink } = require('./mail-service')
@@ -34,15 +34,18 @@ class UserService {
 
     const activationLink = uuid.v4()
     const hashPassword = await bcrypt.hash(password, 5)
-    const user = await User.create({
-      email,
-      role,
-      password: hashPassword,
-      name,
-      phone,
-      activationLink,
-      id,
-    })
+    const user = await User.create(
+      {
+        email,
+        role,
+        password: hashPassword,
+        name,
+        phone,
+        activationLink,
+        id,
+      },
+      { include: Basket }
+    )
     await sendActivationLink(
       email,
       `${process.env.API_URL}/api/user/activate/${activationLink}`
