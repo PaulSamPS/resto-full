@@ -115,6 +115,9 @@ Product.belongsTo(CategoryType)
 Product.hasMany(BasketProduct)
 BasketProduct.belongsTo(Product)
 
+User.hasOne(Basket)
+Basket.belongsTo(User)
+
 module.exports = {
   User,
   Token,

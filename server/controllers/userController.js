@@ -2,7 +2,6 @@ const ApiError = require('../error/ApiError')
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 const { User } = require('../models/models')
-const { sendResetLink } = require('../helpers/reset-email')
 const userService = require('../helpers/user-service')
 const uuid = require('uuid')
 
@@ -12,15 +11,7 @@ class UserController {
       const { email, password, name, phone, role } = req.body
       const id = uuid.v4()
 
-      const userData = await userService.registration(
-        email,
-        password,
-        name,
-        phone,
-        role,
-        next,
-        id
-      )
+      const userData = await userService.registration(email, password, name, phone, role, next, id)
       res.cookie('refreshToken', userData.refreshToken, {
         maxAge: 30 * 24 * 60 * 60 * 1000,
         httpOnly: true,
@@ -42,6 +33,7 @@ class UserController {
         return next(ApiError.badRequest('Неккоректная ссылка активации'))
       }
       user.isActivated = true
+      user.activationLink = null
       await user.save()
       return res.redirect(process.env.CLIENT_URL)
     } catch (e) {
@@ -100,57 +92,57 @@ class UserController {
     crypto.randomBytes(32, async (err, buffer) => {
       const token = buffer.toString('hex')
       const { email } = req.body
-      const user = await User.findOne({ where: { email } })
-
-      if (user) {
-        user.resetToken = token
-        user.resetTokenExp = Date.now() + 60 * 60 * 1000
-        await user.save()
-        await sendResetLink(
-          email,
-          `${process.env.API_URL}/api/user/password/${token}`
-        )
-        return res.redirect(process.env.CLIENT_URL)
-      } else {
-        return next(ApiError.internal('Пользователь с таким email не найден'))
-      }
+      await userService.reset(email, token, res, next)
     })
   }
 
   async passwordToken(req, res, next) {
     try {
       const { token } = req.params
-      const user = await User.findOne({
-        resetToken: { token },
-        resetTokenExp: { $gt: Date.now() },
-      })
-      if (!user) {
-        return next(ApiError.internal('Пользователь не найден'))
-      } else {
-        return res.redirect(process.env.CLIENT_URL + '/user-reset-password')
-      }
+      await userService.passwordToken(token, res, next)
     } catch (e) {
-      console.log(e)
+      next(ApiError.badRequest(e.message))
     }
   }
 
-  async password(req, res, next) {
+  async changePassword(req, res, next) {
     const { id, token } = req.body
-    const user = await User.findOne({
-      id: { id },
-      resetToken: { token },
-      resetTokenExp: { $gt: Date.now() },
-    })
+    await userService.changePassword(id, token, res, next)
+  }
 
-    if (user) {
-      user.password = await bcrypt.hash(req.body.password, 10)
-      user.resetToken = undefined
-      user.resetTokenExp = undefined
-      await user.save()
-      res.redirect(process.env.CLIENT_URL)
-    } else {
-      return next(ApiError.internal('Время жизни токена истекло'))
+  async getOne(req, res, next) {
+    const { id } = req.params
+    try {
+      if (!id) {
+        next(ApiError.badRequest('Не указан id пользователя'))
+      }
+      const user = await userService.getOne(id, next)
+      return res.json(user)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
     }
+  }
+
+  async getAll(req, res, next) {
+    try {
+      const user = await User.findAll()
+      return res.json(user)
+    } catch (e) {
+      next(ApiError.badRequest(e.message))
+    }
+  }
+
+  async updateEmail(req, res, next) {
+    const { email } = req.body
+    const { id } = req.params
+    const user = await userService.updateEmail(id, next, email)
+    return res.json(user)
+  }
+
+  async updateRole(req, res, next) {
+    const { id, role } = req.body
+    const user = await userService.updateRole(id, next, role)
+    return res.json(user)
   }
 }
 

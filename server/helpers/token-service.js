@@ -5,10 +5,10 @@ const uuid = require('uuid')
 class TokenService {
   generateTokens(payload) {
     const accessToken = jwt.sign(payload, process.env.SECRET_KEY, {
-      expiresIn: '15m',
+      expiresIn: '24h',
     })
     const refreshToken = jwt.sign(payload, process.env.SECRET_REFRESH_KEY, {
-      expiresIn: '30m',
+      expiresIn: '30d',
     })
     return {
       accessToken,

@@ -8,8 +8,5 @@ module.exports = new Sequelize(
     dialect: 'postgres',
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
-    define: {
-      timestamps: false, // не добавлять поля created_at и updated_at при создании таблиц
-    },
   }
 )

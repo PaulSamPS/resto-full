@@ -1,31 +1,33 @@
 const Router = require('express')
 const router = new Router()
 const orderController = require('../controllers/orderController')
+const authMiddleware = require('../middleware/authMiddleware')
+const adminMiddleware = require('../middleware/adminMiddleware')
 /*
  * только для администратора магазина
  */
 
 // получить список всех заказов магазина
-router.get('/admin/getall', orderController.adminGetAll)
+router.get('/admin/getall', authMiddleware, adminMiddleware, orderController.adminGetAll)
 // получить список заказов пользователя
-router.get('/admin/getall/user/:id', orderController.adminGetUser)
+router.get('/admin/getall/user/:id', authMiddleware, adminMiddleware, orderController.adminGetUser)
 // получить заказ по id
-router.get('/admin/getone/:id', orderController.adminGetOne)
+router.get('/admin/getone/:id', authMiddleware, adminMiddleware, orderController.adminGetOne)
 // создать новый заказ
-router.post('/admin/create', orderController.adminCreate)
+router.post('/admin/create', authMiddleware, adminMiddleware, orderController.adminCreate)
 // удалить заказ по id
-router.delete('/admin/delete/:id', orderController.adminDelete)
+router.delete('/admin/delete/:id', authMiddleware, adminMiddleware, orderController.adminDelete)
 
 /*
  * для авторизованного пользователя
  */
 
 // получить все заказы пользователя
-router.get('/user/getall', orderController.userGetAll)
+router.get('/user/getall', authMiddleware, orderController.userGetAll)
 // получить один заказ пользователя
-router.get('/user/getone/:id', orderController.userGetOne)
+router.get('/user/getone/:id', authMiddleware, orderController.userGetOne)
 // создать новый заказ
-router.post('/user/create', orderController.userCreate)
+router.post('/user/create', authMiddleware, orderController.userCreate)
 /*
  * для неавторизованного пользователя
  */

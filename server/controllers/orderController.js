@@ -46,7 +46,7 @@ class OrderController {
         // проверяем существование пользователя
         userId = req.body.userId ?? null
         if (userId) {
-          await userService.getOne(userId) // будет исключение, если не найден
+          await userService.getOne(userId, next) // будет исключение, если не найден
         }
       } else {
         // когда заказ делает обычный пользователь (авторизованный или нет), состав
