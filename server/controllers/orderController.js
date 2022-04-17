@@ -1,6 +1,6 @@
-const orderService = require('../helpers/order-service')
-const basketService = require('../helpers/basket-service')
-const userService = require('../helpers/user-service')
+const orderService = require('../services/order-service')
+const basketService = require('../services/basket-service')
+const userService = require('../services/user-service')
 const AppError = require('../error/ApiError')
 
 class OrderController {
@@ -54,9 +54,7 @@ class OrderController {
         if (!req.signedCookies.basketId) {
           next(AppError.badRequest('Ваша корзина пуста'))
         }
-        const basket = await basketService.getOne(
-          parseInt(req.signedCookies.basketId)
-        )
+        const basket = await basketService.getOne(parseInt(req.signedCookies.basketId))
         if (basket.products.length === 0) {
           next(AppError.badRequest('Ваша корзина пуста'))
         }

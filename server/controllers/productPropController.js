@@ -1,5 +1,5 @@
 const AppError = require('../error/ApiError')
-const productService = require('../helpers/product-services')
+const productService = require('../services/product-services')
 
 class ProductProp {
   async getAll(req, res, next) {
@@ -22,10 +22,7 @@ class ProductProp {
       if (!req.params.id) {
         throw new Error('Не указано id свойства')
       }
-      const property = await productService.getOne(
-        req.params.productId,
-        req.params.id
-      )
+      const property = await productService.getOne(req.params.productId, req.params.id)
       res.json(property)
     } catch (e) {
       next(AppError.badRequest(e.message))
@@ -40,10 +37,7 @@ class ProductProp {
       if (Object.keys(req.body).length === 0) {
         throw new Error('Нет данных для создания')
       }
-      const property = await productService.create(
-        req.params.productId,
-        req.body
-      )
+      const property = await productService.create(req.params.productId, req.body)
       res.json(property)
     } catch (e) {
       next(AppError.badRequest(e.message))
@@ -61,11 +55,7 @@ class ProductProp {
       if (Object.keys(req.body).length === 0) {
         throw new Error('Нет данных для обновления')
       }
-      const property = await productService.update(
-        req.params.productId,
-        req.params.id,
-        req.body
-      )
+      const property = await productService.update(req.params.productId, req.params.id, req.body)
       res.json(property)
     } catch (e) {
       next(AppError.badRequest(e.message))
@@ -80,10 +70,7 @@ class ProductProp {
       if (!req.params.id) {
         throw new Error('Не указано id свойства')
       }
-      const property = await productService.delete(
-        req.params.productId,
-        req.params.id
-      )
+      const property = await productService.delete(req.params.productId, req.params.id)
       res.json(property)
     } catch (e) {
       next(AppError.badRequest(e.message))

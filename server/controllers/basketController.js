@@ -1,5 +1,5 @@
 const AppError = require('../error/ApiError')
-const basketService = require('../helpers/basket-service')
+const basketService = require('../services/basket-service')
 
 const maxAge = 60 * 60 * 1000 * 24 * 365 // один год
 const signed = true
@@ -9,9 +9,7 @@ class BasketController {
     try {
       let basket
       if (req.signedCookies.basketId) {
-        basket = await basketService.getOne(
-          parseInt(req.signedCookies.basketId)
-        )
+        basket = await basketService.getOne(parseInt(req.signedCookies.basketId))
       } else {
         basket = await basketService.create()
       }
@@ -50,11 +48,7 @@ class BasketController {
         basketId = parseInt(req.signedCookies.basketId)
       }
       const { productId, quantity } = req.params
-      const basket = await basketService.increment(
-        basketId,
-        productId,
-        quantity
-      )
+      const basket = await basketService.increment(basketId, productId, quantity)
       res.cookie('basketId', basket.id, { maxAge, signed })
       res.json(basket)
     } catch (e) {
@@ -72,11 +66,7 @@ class BasketController {
         basketId = parseInt(req.signedCookies.basketId)
       }
       const { productId, quantity } = req.params
-      const basket = await basketService.decrement(
-        basketId,
-        productId,
-        quantity
-      )
+      const basket = await basketService.decrement(basketId, productId, quantity)
       res.cookie('basketId', basket.id, { maxAge, signed })
       res.json(basket)
     } catch (e) {

@@ -20,7 +20,7 @@ router.post('/reset', userController.reset)
 router.get('/password/:token', userController.passwordToken)
 
 //  смена пароля
-router.post('/password', userController.changePassword)
+router.post('/password-change', userController.changePassword)
 
 //  обновление токенов
 router.get('/refresh', userController.refresh)

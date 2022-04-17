@@ -2,7 +2,7 @@ const ApiError = require('../error/ApiError')
 const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 const { User } = require('../models/models')
-const userService = require('../helpers/user-service')
+const userService = require('../services/user-service')
 const uuid = require('uuid')
 
 class UserController {
@@ -35,7 +35,7 @@ class UserController {
       user.isActivated = true
       user.activationLink = null
       await user.save()
-      return res.redirect(process.env.CLIENT_URL)
+      return res.redirect(process.env.CLIENT_URL + '/login')
     } catch (e) {
       console.log(e)
     }
@@ -107,7 +107,7 @@ class UserController {
 
   async changePassword(req, res, next) {
     const { id, token } = req.body
-    await userService.changePassword(id, token, res, next)
+    await userService.changePassword(id, token, res, req, next)
   }
 
   async getOne(req, res, next) {
