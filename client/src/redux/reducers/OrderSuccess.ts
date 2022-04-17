@@ -1,16 +1,16 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IOrderSuccess} from '../../interfaces/order.interface';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IOrderSuccess } from '../../interfaces/order.interface';
 
 interface IProductState {
-    orderSuccess: IOrderSuccess[]
-    isLoading: boolean
-    error: string
+  orderSuccess: IOrderSuccess[];
+  isLoading: boolean;
+  error: string;
 }
 
 const initialState: IProductState = {
   orderSuccess: [],
   isLoading: false,
-  error: ''
+  error: '',
 };
 
 export const orderSuccessSlice = createSlice({
@@ -28,8 +28,8 @@ export const orderSuccessSlice = createSlice({
     setOrderSuccessError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export default orderSuccessSlice.reducer;

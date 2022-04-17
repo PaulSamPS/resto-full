@@ -1,7 +1,7 @@
-import {DetailedHTMLProps, HTMLAttributes} from 'react';
-import {ProductInterface} from '../../interfaces/product.interface';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { ProductInterface } from '../../interfaces/product.interface';
 
-export interface CartCardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>{
-    product: ProductInterface
-    setModal: (modal: boolean) => void
+export interface CartCardProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  product: ProductInterface;
+  setModal: (modal: boolean) => void;
 }

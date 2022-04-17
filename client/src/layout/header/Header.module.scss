@@ -9,34 +9,18 @@
 	width: 100%;
 
 	padding: 24px 80px;
-	grid-template-columns: auto 555px 1fr auto auto;
+	grid-template-columns: auto 1fr auto auto auto;
 
 	@include _laptopL {
 		grid-template-columns: auto 1fr auto auto auto;
 	}
 
 	@include _laptop {
-		padding: 20px;
-		grid-template-columns: 64px 1fr auto;
-		row-gap: 20px;
-		grid-template-areas:
-			'burger logo button'
-			'search search search';
-	}
-
-	.burger {
 		display: none;
-
-		@include _laptop {
-			display: unset;
-			grid-area: burger;
-
-			cursor: pointer;
-		}
 	}
 
 	.logo {
-		margin-right: 80px;
+		margin-right: 40px;
 
 		cursor: pointer;
 		letter-spacing: 5px;
@@ -44,31 +28,9 @@
 		font-size: 25px;
 
 		@include _laptopL {
-			margin-right: 40px;
+			margin-right: 20px;
 		}
 
-		@include _laptop {
-			margin-right: 0;
-			grid-area: logo;
-			justify-self: left;
-		}
-	}
-
-	.myOrders {
-		margin-right: 40px;
-
-		@include _laptop {
-			display: none;
-		}
-
-		span {
-			cursor: pointer;
-			transition: all ease .2s;
-
-			&:hover {
-				color: var(--green);
-			}
-		}
 	}
 
 	.btn {

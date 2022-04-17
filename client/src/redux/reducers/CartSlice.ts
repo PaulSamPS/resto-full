@@ -1,16 +1,16 @@
-import {ProductInterface} from '../../interfaces/product.interface';
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { ProductInterface } from '../../interfaces/product.interface';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IProductState {
-  cart: ProductInterface[]
-  totalCount: number
-  totalPrice: number
+  cart: ProductInterface[];
+  totalCount: number;
+  totalPrice: number;
 }
 
 const initialState: IProductState = {
   cart: [],
   totalCount: 0,
-  totalPrice: 0
+  totalPrice: 0,
 };
 
 export const cartSlice = createSlice({
@@ -23,7 +23,7 @@ export const cartSlice = createSlice({
         state.cart[itemIndex].qty += 1;
         state.totalCount = state.totalCount += 1;
       } else {
-        state.cart.push({...action.payload});
+        state.cart.push({ ...action.payload });
         state.totalCount = state.totalCount += 1;
       }
       state.totalPrice = state.cart.reduce((result, item) => item.qty * item.price + result, 0);
@@ -46,10 +46,10 @@ export const cartSlice = createSlice({
       state.totalPrice = state.totalPrice = 0;
       state.totalCount = state.totalCount = 0;
       state.cart = state.cart = [];
-    }
-  }
+    },
+  },
 });
 
-export const {setCart, minusItem, deleteItem, setResetCart} = cartSlice.actions;
+export const { setCart, minusItem, deleteItem, setResetCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

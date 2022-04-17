@@ -28,6 +28,9 @@
         "linebreak-style": "off",
         "comma-dangle": "off",
         "no-undef": "off",
-        "require-jsdoc": "off"
+        "require-jsdoc": "off",
+        "object-curly-spacing": "off",
+        "react/react-in-jsx-scope": "off",
+        "indent": "off"
     }
 }

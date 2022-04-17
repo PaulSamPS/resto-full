@@ -1,0 +1,36 @@
+@import './src/scss/index';
+
+.login {
+  margin: 0 40px;
+
+  @include _laptopL {
+    margin: 0 20px;
+  }
+
+  @include _laptop {
+    display: none;
+  }
+
+  .auth {
+    transition: all ease .2s;
+    width: 98px;
+    cursor: pointer;
+    @include flexCenterCenter;
+    column-gap: 10px;
+
+    svg {
+      transition: all ease .2s;
+    }
+    &:hover {
+      color: var(--green);
+
+      svg {
+        stroke: var(--green);
+      }
+    }
+
+    @include _laptopL {
+      font-size: 14px;
+    }
+  }
+}

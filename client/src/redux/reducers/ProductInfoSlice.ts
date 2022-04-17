@@ -1,10 +1,10 @@
-import {ProductInterface} from '../../interfaces/product.interface';
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { ProductInterface } from '../../interfaces/product.interface';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface IProductState {
-    product: ProductInterface
-    isLoading: boolean
-    error: string
+  product: ProductInterface;
+  isLoading: boolean;
+  error: string;
 }
 
 const initialState: IProductState = {
@@ -18,10 +18,10 @@ const initialState: IProductState = {
     price: 0,
     qty: 0,
     weight: 0,
-    description: ''
+    description: '',
   },
   isLoading: false,
-  error: ''
+  error: '',
 };
 
 export const productInfoSlice = createSlice({
@@ -39,8 +39,8 @@ export const productInfoSlice = createSlice({
     setInfoProductError(state, action: PayloadAction<string>) {
       state.isLoading = false;
       state.error = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export default productInfoSlice.reducer;

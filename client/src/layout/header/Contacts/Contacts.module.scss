@@ -1,13 +1,16 @@
 @import './src/scss/index';
 
 .wrapper {
-	@include flex;
+	@include flexBetweenCenter;
 	gap: 10px;
 
 	margin-left: 40px;
+	border-right: 1px solid #635C5A;
+	padding-right: 40px;
 
 	@include _laptopL {
-		margin-right: 40px;
+		margin-left: 20px;
+		padding-right: 20px;
 	}
 
 	@include _laptop {
@@ -28,6 +31,11 @@
 		&:hover {
 			transform: scale(1.1);
 		}
+
+		@include _laptopL {
+			width: 28px;
+			height: 28px;
+		}
 	}
 
 	.phoneWrapper {
@@ -39,6 +47,10 @@
 
 			font-size: 12px;
 			font-weight: 400;
+
+			@include _laptopL {
+				font-size: 10px;
+			}
 		}
 
 		.phoneNumber {
@@ -47,6 +59,10 @@
 			font-size: 14px;
 			font-weight: 700;
 			line-height: 20px;
+
+			@include _laptopL {
+				font-size: 12px;
+			}
 		}
 	}
 }

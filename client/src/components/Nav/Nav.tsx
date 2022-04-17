@@ -1,48 +1,39 @@
 import React from 'react';
-import {useAppDispatch, useAppSelector} from '../../hooks/redux';
-import {getNav, getProduct} from '../../redux/actions/ActionCreator';
-import {NavInterface} from '../../interfaces/nav.interface';
-import {useLocation, useNavigate} from 'react-router-dom';
-import {setActiveNav} from '../../redux/reducers/NavSlice';
 import cn from 'classnames';
 import styles from './Nav.module.scss';
 
+const nav = [
+  { id: 1, name: 'Горячие закуски' },
+  { id: 2, name: 'Холодные закуски' },
+  { id: 3, name: 'Супы' },
+  { id: 4, name: 'Десерты' },
+  { id: 5, name: 'Мясные блюда' },
+  { id: 6, name: 'Фирменные блюда' },
+];
+
 export const Nav: React.FC = (): JSX.Element => {
-  const {nav, activeIndex} = useAppSelector((state) => state.navReducer);
-  const dispatch = useAppDispatch();
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [activeIndex, setActiveIndex] = React.useState<number>(1);
 
-  const handleClick = (index: number, category: string) => {
-    dispatch(setActiveNav(index));
-    dispatch(getProduct(category));
-    navigate('/');
+  const handleClick = (id: number) => {
+    setActiveIndex(id);
   };
-
-  if (location.pathname !== '/') {
-    dispatch(setActiveNav(null));
-  }
-
-  React.useEffect(() => {
-    dispatch(getNav());
-  }, []);
 
   return (
     <div className={styles.wrapper}>
       <nav className={styles.nav}>
-        {nav.map((n: NavInterface, index: number): JSX.Element =>
+        {nav.map((n) => (
           <a
             className={cn(styles.navLink, {
-              [styles.activeLink]: activeIndex === index,
-              [styles.activeLinkBorder]: activeIndex === index
+              [styles.activeLink]: activeIndex === n.id,
+              [styles.activeLinkBorder]: activeIndex === n.id,
             })}
             key={n.id}
-            onClick={() => handleClick(index, n.category)}
+            onClick={() => handleClick(n.id)}
           >
             {n.name}
-          </a>)}
+          </a>
+        ))}
       </nav>
     </div>
   );
 };
-

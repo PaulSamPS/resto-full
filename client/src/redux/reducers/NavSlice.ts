@@ -1,18 +1,18 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {NavInterface} from '../../interfaces/nav.interface';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { NavInterface } from '../../interfaces/nav.interface';
 
 interface INavState {
-  nav: NavInterface[]
-  isLoading: boolean
-  error: string
-  activeIndex: number| null
+  nav: NavInterface[];
+  isLoading: boolean;
+  error: string;
+  activeIndex: number | null;
 }
 
 const initialState: INavState = {
   nav: [],
   isLoading: false,
   error: '',
-  activeIndex: 0
+  activeIndex: 0,
 };
 
 export const navSlice = createSlice({
@@ -33,10 +33,10 @@ export const navSlice = createSlice({
     },
     setActiveNav(state, action: PayloadAction<number | null>) {
       state.activeIndex = action.payload;
-    }
-  }
+    },
+  },
 });
 
-export const {setActiveNav} = navSlice.actions;
+export const { setActiveNav } = navSlice.actions;
 
 export default navSlice.reducer;

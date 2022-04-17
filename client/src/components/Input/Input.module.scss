@@ -2,6 +2,7 @@
 
 .wrapper {
 	position: relative;
+	width: 100%;
 
 	.input {
 		width: 100%;
@@ -17,7 +18,7 @@
 		font-weight: 400;
 
 		&::placeholder {
-			opacity: 1;
+			opacity: 0.5;
 			color: var(--textWhite);
 		}
 

@@ -54,7 +54,6 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       "since 2020"
@@ -71,6 +70,7 @@
     "eslint-config-google": "^0.14.0",
     "eslint-plugin-jsdoc": "^37.9.5",
     "eslint-plugin-react": "^7.29.2",
+    "prettier": "^2.6.2",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-order": "^4.1.0",

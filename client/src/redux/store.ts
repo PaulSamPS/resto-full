@@ -1,4 +1,4 @@
-import {combineReducers, configureStore} from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import productReducer from './reducers/ProductSlice';
 import productInfoReducer from './reducers/ProductInfoSlice';
 import navReducer from './reducers/NavSlice';
@@ -7,6 +7,7 @@ import geoReducer from './reducers/GeoSlice';
 import addressReducer from './reducers/AddressSlice';
 import orderReducer from './reducers/OrderSlice';
 import orderSuccessReducer from './reducers/OrderSuccess';
+import userReducer from './reducers/userReducer';
 
 const rootReducer = combineReducers({
   productReducer,
@@ -16,16 +17,17 @@ const rootReducer = combineReducers({
   geoReducer,
   addressReducer,
   orderReducer,
-  orderSuccessReducer
+  orderSuccessReducer,
+  userReducer,
 });
 
 export const createStore = () => {
   return configureStore({
     reducer: rootReducer,
-    devTools: true
+    devTools: true,
   });
 };
 
-export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof createStore>
-export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof createStore>;
+export type AppDispatch = AppStore['dispatch'];
