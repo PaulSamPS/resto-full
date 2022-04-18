@@ -8,7 +8,7 @@ const basketRouter = require('./basketRouter')
 const productPropRouter = require('./productPropRouter')
 const orderPropRouter = require('./orderRouter')
 
-router.use('/user', userRouter)
+router.use('/auth', userRouter)
 router.use('/product', productRouter)
 router.use('/category', categoryRouter)
 router.use('/basket', basketRouter)

@@ -4,9 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { login } from '../../redux/actions/userAction';
+import { login } from '../../redux/actions/authAction';
 import { IFormDataLogin } from '../../interfaces/formData.interface';
 import styles from './Auth.module.scss';
+import { Spinner } from '../../components/Spinner/Spinner';
 
 export const Login = () => {
   const {
@@ -15,7 +16,7 @@ export const Login = () => {
     formState: { errors, isValid },
     reset,
   } = useForm<IFormDataLogin>({ mode: 'onChange' });
-  const { error } = useAppSelector((state) => state.userReducer);
+  const { error, isLoading, statusOk } = useAppSelector((state) => state.loginReducer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -23,14 +24,25 @@ export const Login = () => {
     navigate('/registration');
   };
 
-  const onSubmit = (formData: IFormDataLogin) => {
-    dispatch(login(formData));
+  const onSubmit = async (formData: IFormDataLogin) => {
+    await dispatch(login(formData));
     reset();
   };
 
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (statusOk) {
+    navigate('/');
+  }
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      {error && <span className={styles.err}>{error}</span>}
+      <div className={styles.top}>
+        <h1 className={styles.title}>Логин</h1>
+        {error && <span className={styles.err}>{error}</span>}
+      </div>
       <Input
         {...register('name', { required: { value: true, message: 'Введите имя' } })}
         placeholder='Логин'

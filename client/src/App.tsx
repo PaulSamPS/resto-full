@@ -13,7 +13,7 @@ import { PasswordChange } from './pages/Auth/PasswordChange';
 import { useAppSelector } from './hooks/redux';
 
 export const App: React.FC = (): JSX.Element => {
-  const { user, isAuth } = useAppSelector((state) => state.userReducer);
+  const { user, isAuth } = useAppSelector((state) => state.loginReducer);
 
   return (
     <BrowserRouter>

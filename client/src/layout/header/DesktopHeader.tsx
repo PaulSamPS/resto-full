@@ -43,7 +43,7 @@ export const DesktopHeader: React.FC = (): JSX.Element => {
         Корзина
       </Button>
       <Modal setModal={setModal} modal={modal}>
-        <img className={styles.image} src={'assets/emptyCart.png'} alt='Корзина пуста' />
+        <img className={styles.image} src='http://localhost:5000/cart/emptyCart.png' alt='Корзина пуста' />
         <h2>Корзина пуста</h2>
         <Button className={styles.modalBtn} onClick={handleNavigate}>
           Посмотреть меню

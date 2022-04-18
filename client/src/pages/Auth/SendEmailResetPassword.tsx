@@ -1,32 +1,42 @@
 import React from 'react';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import styles from './Auth.module.scss';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { resetEmail } from '../../redux/actions/authAction';
+import { IFormDataResetEmail } from '../../interfaces/formData.interface';
+import { Spinner } from '../../components/Spinner/Spinner';
 
 export const SendEmailResetPassword = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
-  } = useForm({ mode: 'onChange' });
-  const [error, setError] = React.useState<string | null>(null);
+    reset,
+  } = useForm<IFormDataResetEmail>({ mode: 'onChange' });
+  const { error, isLoading, statusOk } = useAppSelector((state) => state.resetEmailReducer);
+  const dispatch = useAppDispatch();
 
-  const onSubmit = async (formData: any) => {
-    await axios
-      .post('http://localhost:5000/api/user/reset', formData)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((e) => {
-        setError(e.response.data.message);
-      });
+  const onSubmit = async (formData: IFormDataResetEmail) => {
+    await dispatch(resetEmail(formData));
+    reset();
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (statusOk) {
+    return <span>Ссылка для смены пароля отправлена на ваш email</span>;
+  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      {error && <span className={styles.err}>{error}</span>}
+      <div className={styles.top}>
+        <h1 className={styles.title}>Сброс пароля</h1>
+        {error && <span className={styles.err}>{error}</span>}
+      </div>
       <Input
         {...register('email', { required: { value: true, message: 'Введите email' } })}
         placeholder='Введите ваш email'

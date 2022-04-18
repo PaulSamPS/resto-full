@@ -35,18 +35,21 @@ export const PasswordChange = () => {
 
   if (status) {
     return (
-      <span>
+      <>
         Пароль изменён, теперь вы можете
         <span className={styles.forgotPassword} onClick={navigateToLogin} style={{ marginLeft: '10px' }}>
           Войти
         </span>
-      </span>
+      </>
     );
   }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      {error && <span className={styles.err}>{error}</span>}
+      <div className={styles.top}>
+        <h1 className={styles.title}>Новый пароль</h1>
+        {error && <span className={styles.err}>{error}</span>}
+      </div>
       <Input
         {...register('password', { required: { value: true, message: 'Введите новый пароль' } })}
         placeholder='Введите новый пароль'

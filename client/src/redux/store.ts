@@ -7,7 +7,10 @@ import geoReducer from './reducers/GeoSlice';
 import addressReducer from './reducers/AddressSlice';
 import orderReducer from './reducers/OrderSlice';
 import orderSuccessReducer from './reducers/OrderSuccess';
-import userReducer from './reducers/userReducer';
+import loginReducer from './reducers/auth/loginReducer';
+import registrationReducer from './reducers/auth/registrationReducer';
+import resetEmailReducer from './reducers/auth/resetEmailReducer';
+import logoutReducer from './reducers/auth/logoutReducer';
 
 const rootReducer = combineReducers({
   productReducer,
@@ -18,7 +21,10 @@ const rootReducer = combineReducers({
   addressReducer,
   orderReducer,
   orderSuccessReducer,
-  userReducer,
+  loginReducer,
+  registrationReducer,
+  resetEmailReducer,
+  logoutReducer,
 });
 
 export const createStore = () => {

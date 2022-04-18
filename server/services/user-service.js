@@ -39,7 +39,7 @@ class UserService {
       },
       { include: Basket }
     )
-    await sendActivationLink(email, `${process.env.API_URL}/api/user/activate/${activationLink}`)
+    await sendActivationLink(email, `${process.env.API_URL}/api/auth/activate/${activationLink}`)
     const userDto = new UserDto(user)
     const tokens = tokenService.generateTokens({ ...userDto })
     await tokenService.saveToken(userDto.id, tokens.refreshToken)
@@ -55,7 +55,7 @@ class UserService {
       return next(ApiError.internal('Неверный пароль'))
     }
     if (!user.isActivated) {
-      return next(ApiError.internal('Перейдите по ссылке из письма отправленной на email указанный при регистрации'))
+      return next(ApiError.internal('Активируйте аккаунт по ссылке из письма отправленной на email указанный при регистрации'))
     }
     const userDto = new UserDto(user)
     const tokens = tokenService.generateTokens({ ...userDto })
@@ -97,7 +97,7 @@ class UserService {
       user.resetToken = token
       user.resetTokenExp = Date.now() + 60 * 60 * 1000
       await user.save()
-      await sendResetLink(email, `${process.env.API_URL}/api/user/password/${token}`)
+      await sendResetLink(email, `${process.env.API_URL}/api/auth/password/${token}`)
       return res.status(200).send('Письмо отправлено')
     } else {
       return next(ApiError.internal('Пользователь с таким email не найден'))

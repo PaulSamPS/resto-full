@@ -10,7 +10,7 @@ const adminMiddleware = require('../middleware/adminMiddleware')
 // получить список всех заказов магазина
 router.get('/admin/getall', authMiddleware, adminMiddleware, orderController.adminGetAll)
 // получить список заказов пользователя
-router.get('/admin/getall/user/:id', authMiddleware, adminMiddleware, orderController.adminGetUser)
+router.get('/admin/getall/auth/:id', authMiddleware, adminMiddleware, orderController.adminGetUser)
 // получить заказ по id
 router.get('/admin/getone/:id', authMiddleware, adminMiddleware, orderController.adminGetOne)
 // создать новый заказ
@@ -23,11 +23,11 @@ router.delete('/admin/delete/:id', authMiddleware, adminMiddleware, orderControl
  */
 
 // получить все заказы пользователя
-router.get('/user/getall', authMiddleware, orderController.userGetAll)
+router.get('/auth/getall', authMiddleware, orderController.userGetAll)
 // получить один заказ пользователя
-router.get('/user/getone/:id', authMiddleware, orderController.userGetOne)
+router.get('/auth/getone/:id', authMiddleware, orderController.userGetOne)
 // создать новый заказ
-router.post('/user/create', authMiddleware, orderController.userCreate)
+router.post('/auth/create', authMiddleware, orderController.userCreate)
 /*
  * для неавторизованного пользователя
  */

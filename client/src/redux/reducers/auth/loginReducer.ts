@@ -1,11 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { IAuthUser } from '../interfaces/authUser.interface';
+import { IAuthUser } from '../../interfaces/authUser.interface';
 
 interface ILogin {
   isLoading: boolean;
   error: string | undefined;
   user: IAuthUser;
   isAuth: boolean;
+  statusOk: boolean;
 }
 
 const initialState: ILogin = {
@@ -13,9 +14,10 @@ const initialState: ILogin = {
   isLoading: false,
   error: '',
   isAuth: false,
+  statusOk: false,
 };
 
-export const userReducer = createSlice({
+export const loginReducer = createSlice({
   name: 'login',
   initialState,
   reducers: {
@@ -27,12 +29,20 @@ export const userReducer = createSlice({
       state.error = '';
       state.isAuth = true;
       state.user = action.payload;
+      state.statusOk = true;
     },
     setLoginError(state, action: PayloadAction<string | undefined>) {
       state.isLoading = false;
       state.error = action.payload;
     },
+    setLoginClear(state) {
+      state.isLoading = false;
+      state.error = '';
+      state.statusOk = false;
+      state.isAuth = false;
+      state.user = {} as any;
+    },
   },
 });
 
-export default userReducer.reducer;
+export default loginReducer.reducer;

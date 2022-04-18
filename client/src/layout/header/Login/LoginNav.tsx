@@ -5,7 +5,7 @@ import { useAppSelector } from '../../../hooks/redux';
 import { useNavigate } from 'react-router-dom';
 
 export const LoginNav = () => {
-  const { user, isAuth } = useAppSelector((state) => state.userReducer);
+  const { user, isAuth } = useAppSelector((state) => state.loginReducer);
   const navigate = useNavigate();
 
   return (
