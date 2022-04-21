@@ -5,6 +5,8 @@ import { Input } from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import styles from './Auth.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { setActiveCategory } from '../../redux/reducers/categoryReducer';
+import { useAppDispatch } from '../../hooks/redux';
 
 export const PasswordChange = () => {
   const {
@@ -15,6 +17,7 @@ export const PasswordChange = () => {
   const navigate = useNavigate();
   const [error, setError] = React.useState<string | null>(null);
   const [status, setStatus] = React.useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const navigateToLogin = () => {
     navigate('/login');
@@ -22,7 +25,7 @@ export const PasswordChange = () => {
 
   const onSubmit = async (formData: any) => {
     await axios
-      .post('http://localhost:5000/api/user/password-change', formData)
+      .post('http://localhost:5000/api/auth/password-change', formData)
       .then((res) => {
         if (res.status == 200) {
           setStatus(true);
@@ -32,6 +35,10 @@ export const PasswordChange = () => {
         setError(e.response.data.message);
       });
   };
+
+  React.useEffect(() => {
+    dispatch(setActiveCategory(0));
+  }, []);
 
   if (status) {
     return (

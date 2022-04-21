@@ -67,6 +67,7 @@
 
 		.top {
 			@include flexBetweenBaseline;
+			column-gap: 10px;
 
 			h3 {
 				color: var(--textWhite);

@@ -1,0 +1,54 @@
+@import '../../scss/index';
+
+.wrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-areas:
+  'top top'
+  'left right';
+  margin-bottom: 80px;
+
+  .top {
+    @include flexBetweenCenter;
+    grid-area: top;
+
+    .title {
+      margin: 0 0 40px;
+      padding-left: 20px;
+
+      border-left: 4px solid var(--green);
+
+      font-size: 32px;
+
+      @include _tablet {
+        margin-left: 0;
+
+        font-size: 26px;
+      }
+    }
+  }
+
+  .left {
+    grid-area: left;
+    margin-top: 40px;
+    .sidebarLink {
+      margin-left: 0;
+      cursor: pointer;
+      transition: all ease 0.2s;
+      white-space: nowrap;
+
+      color: var(--tetxGray);
+
+      &:hover {
+        color: var(--green);
+      }
+    }
+  }
+
+  .right {
+    margin-top: 40px;
+    grid-area: right;
+    justify-self: center;
+  }
+}

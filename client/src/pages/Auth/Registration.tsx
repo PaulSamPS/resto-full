@@ -8,6 +8,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { registration } from '../../redux/actions/authAction';
 import { IFormDataRegistration } from '../../interfaces/formData.interface';
 import { Spinner } from '../../components/Spinner/Spinner';
+import { setActiveCategory } from '../../redux/reducers/categoryReducer';
 
 export const Registration = () => {
   const {
@@ -28,6 +29,10 @@ export const Registration = () => {
     await dispatch(registration(formData));
     reset();
   };
+
+  React.useEffect(() => {
+    dispatch(setActiveCategory(0));
+  }, []);
 
   if (isLoading) {
     return <Spinner />;

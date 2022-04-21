@@ -5,16 +5,16 @@ import { MobileMenu } from '../../components/MobileMenu/MobileMenu';
 import { ButtonMobile } from '../../components/ButtonMobile/ButtonMobile';
 import { ReactComponent as MobileMenuIcon } from '../../helpers/icons/burger.svg';
 import { Search } from './Search/Search';
-import { useAppSelector } from '../../hooks/redux';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../components/Button/Button';
 import { Modal } from '../../components/Modal/Modal';
 
-export const MobileHeader = () => {
+export const MobileHeader = (): JSX.Element => {
   const [modalMenu, setModalMenu] = React.useState<boolean>(false);
   const [modal, setModal] = React.useState<boolean>(false);
-  const { totalCount } = useAppSelector((state) => state.cartReducer);
   const navigate = useNavigate();
+
+  const totalCount = 3;
 
   const variants = {
     open: { opacity: 1, x: 0 },

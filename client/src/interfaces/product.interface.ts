@@ -1,18 +1,21 @@
-export interface INutritionalValue {
-    id: number
-    name: string
-    value: string
+export interface IProductResponse {
+  count: number;
+  rows: ProductInterface[];
+}
+
+export interface IInfo {
+  id: number;
+  name: string;
+  value: string;
 }
 
 export interface ProductInterface {
-    id: number
-    name: string
-    image: string
-    description: string
-    weight: number
-    price: number
-    qty: number
-    category: string
-    categoryRu: string
-    nutritionalValue?: INutritionalValue[]
+  id: number;
+  name: string;
+  img: string;
+  description: string;
+  weight: number;
+  price: number;
+  category: string;
+  info?: IInfo[];
 }

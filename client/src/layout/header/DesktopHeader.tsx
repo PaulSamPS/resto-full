@@ -2,19 +2,20 @@ import React from 'react';
 import { Search } from './Search/Search';
 import { Contacts } from './Contacts/Contacts';
 import { Modal } from '../../components/Modal/Modal';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { useAppDispatch } from '../../hooks/redux';
 import { useNavigate } from 'react-router-dom';
-import { setActiveNav } from '../../redux/reducers/NavSlice';
+import { setActiveCategory } from '../../redux/reducers/categoryReducer';
 import { getProduct } from '../../redux/actions/ActionCreator';
 import { Button } from '../../components/Button/Button';
 import styles from './Header.module.scss';
 import { LoginNav } from './Login/LoginNav';
 
-export const DesktopHeader: React.FC = (): JSX.Element => {
+export const DesktopHeader = (): JSX.Element => {
   const [modal, setModal] = React.useState<boolean>(false);
-  const { totalCount } = useAppSelector((state) => state.cartReducer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const totalCount = 3;
 
   const handleClick = () => {
     if (totalCount <= 0) {
@@ -25,7 +26,7 @@ export const DesktopHeader: React.FC = (): JSX.Element => {
   };
 
   const handleNavigate = () => {
-    dispatch(setActiveNav(0));
+    dispatch(setActiveCategory(1));
     dispatch(getProduct());
     setModal(false);
     navigate('/');

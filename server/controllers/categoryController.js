@@ -3,9 +3,8 @@ const uuid = require('uuid')
 
 class CategoryController {
   async addCategory(req, res) {
-    const id = uuid.v4()
     const { name } = req.body
-    const type = await CategoryType.create({ name, id })
+    const type = await CategoryType.create({ name })
     return res.json(type)
   }
 

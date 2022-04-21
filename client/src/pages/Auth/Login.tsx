@@ -8,6 +8,7 @@ import { login } from '../../redux/actions/authAction';
 import { IFormDataLogin } from '../../interfaces/formData.interface';
 import styles from './Auth.module.scss';
 import { Spinner } from '../../components/Spinner/Spinner';
+import { setActiveCategory } from '../../redux/reducers/categoryReducer';
 
 export const Login = () => {
   const {
@@ -28,6 +29,10 @@ export const Login = () => {
     await dispatch(login(formData));
     reset();
   };
+
+  React.useEffect(() => {
+    dispatch(setActiveCategory(0));
+  }, []);
 
   if (isLoading) {
     return <Spinner />;

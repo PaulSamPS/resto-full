@@ -45,7 +45,6 @@ const ProductInfo = sequelize.define(
 const CategoryType = sequelize.define(
   'category_type',
   {
-    id: { type: DataTypes.STRING, primaryKey: true, unique: true },
     name: { type: DataTypes.STRING, unique: true, allowNull: false },
   },
   { timestamps: false }

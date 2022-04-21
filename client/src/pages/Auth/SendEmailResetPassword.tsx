@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { resetEmail } from '../../redux/actions/authAction';
 import { IFormDataResetEmail } from '../../interfaces/formData.interface';
 import { Spinner } from '../../components/Spinner/Spinner';
+import { setActiveCategory } from '../../redux/reducers/categoryReducer';
 
 export const SendEmailResetPassword = () => {
   const {
@@ -22,6 +23,10 @@ export const SendEmailResetPassword = () => {
     await dispatch(resetEmail(formData));
     reset();
   };
+
+  React.useEffect(() => {
+    dispatch(setActiveCategory(0));
+  }, []);
 
   if (isLoading) {
     return <Spinner />;

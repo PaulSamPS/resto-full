@@ -13,3 +13,20 @@ export interface IFormDataRegistration {
 export interface IFormDataResetEmail {
   email: string;
 }
+
+export interface IInfo {
+  id: string;
+  name: string;
+  value: string;
+}
+
+export interface IFormDataCreateProduct {
+  id: string;
+  name: string;
+  img: string;
+  price: number;
+  description: string;
+  weight: string;
+  category: string;
+  info: IInfo[];
+}

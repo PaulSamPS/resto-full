@@ -1,0 +1,111 @@
+.createProductBlock {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    margin-bottom: 40px;
+  }
+
+  .product {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+    justify-items: left;
+    row-gap: 20px;
+
+    label {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 100px 500px;
+      color: var(--textWhite);
+
+      label {
+        margin-left: 20px;
+      }
+    }
+
+    .btnOldPrice {
+      margin-left: 20px;
+      width: 227px;
+    }
+
+    .previewBlock {
+      display: flex;
+      gap: 10px;
+      background: var(--brown);
+      border-radius: 10px;
+      width: 150px;
+      height: 150px;
+
+      .previewImage {
+        img {
+          object-fit: contain;
+          width: 150px;
+          height: 150px;
+        }
+      }
+    }
+
+    .inputFile {
+      position: relative;
+      .file {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+      }
+      .inputBtn {
+        display: inline-block;
+
+        box-sizing: border-box;
+        padding: 10px 30px;
+        width: 227px;
+        background-color: var(--green);
+        color: var(--textWhite);
+
+        cursor: pointer;
+        transition: all ease 0.2s;
+        text-align: center;
+        font-weight: 700;
+
+        border: none;
+        border-radius: 10px;
+
+        font-size: 14px;
+
+        &:active {
+          transform: translateY(2px);
+
+          box-shadow: 0 5px 10px 0 #72A379B2;
+        }
+      }
+    }
+
+    .addInfo {
+
+      button {
+        width: 227px;
+      }
+    }
+    .description {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      .inputBlock {
+        label {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+
+  .blockSubmit {
+
+    .submit {
+      margin-top: 20px;
+    }
+  }
+  .btn {
+    justify-self: center;
+  }
+}

@@ -1,12 +1,12 @@
 import React from 'react';
-import {ReactComponent as CallingIcon} from '../../../helpers/icons/calling.svg';
+import { ReactComponent as CallingIcon } from '../../../helpers/icons/calling.svg';
 import styles from './Contacts.module.scss';
 
-export const Contacts: React.FC = (): JSX.Element => {
+export const Contacts = (): JSX.Element => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.icon}>
-        <CallingIcon/>
+        <CallingIcon />
       </div>
       <div className={styles.phoneWrapper}>
         <span>Контакты:</span>

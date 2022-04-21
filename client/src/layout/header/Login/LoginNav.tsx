@@ -4,7 +4,7 @@ import { ReactComponent as ProfileIcon } from '../../../helpers/icons/profile.sv
 import { useAppSelector } from '../../../hooks/redux';
 import { useNavigate } from 'react-router-dom';
 
-export const LoginNav = () => {
+export const LoginNav = (): JSX.Element => {
   const { user, isAuth } = useAppSelector((state) => state.loginReducer);
   const navigate = useNavigate();
 
